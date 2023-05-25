@@ -8,6 +8,10 @@
 import UIKit
 import CoreData
 
+protocol ReloadDelegate2 {
+    func reloadTableView(on: Bool)
+}
+
 class AddIncomeViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var incomeCategoryTextField: UITextField!
@@ -21,6 +25,8 @@ class AddIncomeViewController: UIViewController, UITextFieldDelegate {
     var manageObjectContext: NSManagedObjectContext?
     var incomeList = [Income]()
     
+    var delegate2: ReloadDelegate2?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,10 +38,10 @@ class AddIncomeViewController: UIViewController, UITextFieldDelegate {
         manageObjectContext = appDelegate.persistentContainer.viewContext
     }
     
-    func updateDetails(){
-        
-    }
-    
+//    func updateDetails(){
+//
+//    }
+//
     func saveData(){
         let newItem = Income(context: manageObjectContext!)
         newItem.incomeCategory = incomeCategoryString
@@ -63,6 +69,7 @@ class AddIncomeViewController: UIViewController, UITextFieldDelegate {
         }
         
         saveData()
+        delegate2?.reloadTableView(on: true)
         self.dismiss(animated: true)
     }
 

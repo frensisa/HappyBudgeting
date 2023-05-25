@@ -8,6 +8,10 @@
 import UIKit
 import CoreData
 
+protocol ReloadDelegate {
+    func reloadTabeView(on: Bool)
+}
+
 class AddViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var categoryTextfield: UITextField!
@@ -20,8 +24,9 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     
     var manageObjectContext: NSManagedObjectContext?
     var expenseList = [Spendings]()
-  
     
+    var delegate: ReloadDelegate?
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,15 +52,9 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         }catch{
             fatalError("Error in saving data")
         }
-
-        //loadData()
-
+        
     }
     
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//           textField.text = ""
-//           textField.placeholder = nil
-//       }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         expenseCategoryString = categoryTextfield.text ?? ""
@@ -65,6 +64,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         }
         
         saveData()
+        delegate?.reloadTabeView(on: true)
         self.dismiss(animated: true)
     }
 }

@@ -8,19 +8,21 @@
 import UIKit
 import CoreData
 
-class IncomeViewController: UIViewController {
-    @IBOutlet weak var incomeTableView: UITableView!
+class IncomeViewController: UIViewController, ReloadDelegate2 {
     
+    @IBOutlet weak var incomeTableView: UITableView!
 
     var manageObjectContext: NSManagedObjectContext?
     var incomeList = [Income]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         manageObjectContext = appDelegate.persistentContainer.viewContext
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool){
+
     }
     
     @IBAction func infoButtonTapped(_ sender: Any) {
@@ -59,6 +61,20 @@ class IncomeViewController: UIViewController {
         }
         
         return totalIncomeAmount
+    }
+    func reloadTableView(on: Bool) {
+        if on {
+            DispatchQueue.main.async {
+                self.loadData()
+            }
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "incomeSave" {
+            let vc = segue.destination as! AddIncomeViewController
+            vc.delegate2 = self
+        }
     }
     
 }//class ends

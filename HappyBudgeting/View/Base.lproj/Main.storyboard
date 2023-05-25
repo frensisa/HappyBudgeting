@@ -114,7 +114,7 @@
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="RRN-Gj-N5a">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
-                                <segue destination="nyZ-9E-gDe" kind="presentation" id="JHh-uB-Mv5"/>
+                                <segue destination="nyZ-9E-gDe" kind="presentation" identifier="incomeSave" id="JHh-uB-Mv5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -379,7 +379,7 @@
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="wyl-ty-JIS">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
-                                <segue destination="HSr-EK-C7v" kind="presentation" id="BBg-Ta-nDf"/>
+                                <segue destination="HSr-EK-C7v" kind="presentation" identifier="save" id="BBg-Ta-nDf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -399,18 +399,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Gy2-hd-F3V">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Gy2-hd-F3V">
                                 <rect key="frame" x="168" y="149" width="164" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dear, Budgeter!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9D-ew-Pma">
-                                        <rect key="frame" x="0.0" y="0.0" width="164" height="27"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="164" height="26.333333333333332"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Welcome back 🤘" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nud-nj-ozo">
-                                        <rect key="frame" x="0.0" y="42" width="164" height="22"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="31.333333333333339" width="164" height="32.666666666666657"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -437,23 +437,22 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-26" translatesAutoresizingMaskIntoConstraints="NO" id="71Z-d3-FjP">
-                                <rect key="frame" x="60" y="270" width="274" height="99"/>
+                                <rect key="frame" x="60" y="326" width="272" height="99"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Budget:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfW-sc-Zh7">
-                                        <rect key="frame" x="0.0" y="0.0" width="274" height="31"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Budget is" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfW-sc-Zh7">
+                                        <rect key="frame" x="0.0" y="0.0" width="272" height="31"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="274" id="0HF-BT-dpK"/>
                                             <constraint firstAttribute="height" constant="31" id="I6j-Fq-wiA"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$250.55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjW-BG-byX">
-                                        <rect key="frame" x="0.0" y="5" width="274" height="94"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$250.55" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjW-BG-byX">
+                                        <rect key="frame" x="0.0" y="5" width="272" height="94"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="94" id="BuI-FT-pZy"/>
-                                            <constraint firstAttribute="width" constant="272" id="N0V-Sy-SJd"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="272" id="N0V-Sy-SJd"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="43"/>
                                         <nil key="textColor"/>
@@ -467,19 +466,19 @@
                         <constraints>
                             <constraint firstItem="9Pg-Ui-uiX" firstAttribute="trailing" secondItem="Gy2-hd-F3V" secondAttribute="trailing" constant="61" id="4IT-gM-mxU"/>
                             <constraint firstItem="9Pg-Ui-uiX" firstAttribute="trailing" secondItem="j1G-za-3Ig" secondAttribute="trailing" constant="42" id="7mK-EL-vGB"/>
-                            <constraint firstItem="71Z-d3-FjP" firstAttribute="top" secondItem="rK9-ye-Dqy" secondAttribute="bottom" constant="44" id="CJp-8g-Pbu"/>
                             <constraint firstItem="Gy2-hd-F3V" firstAttribute="top" secondItem="9Pg-Ui-uiX" secondAttribute="top" constant="46" id="Eec-dV-sLe"/>
+                            <constraint firstItem="71Z-d3-FjP" firstAttribute="leading" secondItem="9Pg-Ui-uiX" secondAttribute="leading" constant="60" id="F3W-B1-M8E"/>
                             <constraint firstItem="rK9-ye-Dqy" firstAttribute="leading" secondItem="9Pg-Ui-uiX" secondAttribute="leading" constant="58" id="GPy-BU-Amh"/>
                             <constraint firstItem="9Pg-Ui-uiX" firstAttribute="trailing" secondItem="Gy2-hd-F3V" secondAttribute="trailing" constant="61" id="Hoz-N7-JNC"/>
                             <constraint firstItem="rK9-ye-Dqy" firstAttribute="top" secondItem="9Pg-Ui-uiX" secondAttribute="top" constant="33" id="Uqd-66-6J7"/>
-                            <constraint firstItem="71Z-d3-FjP" firstAttribute="leading" secondItem="9Pg-Ui-uiX" secondAttribute="leading" constant="60" id="Xly-yt-Aqd"/>
                             <constraint firstItem="9Pg-Ui-uiX" firstAttribute="trailing" secondItem="Gy2-hd-F3V" secondAttribute="trailing" constant="61" id="ZD6-3L-1FK"/>
                             <constraint firstItem="rK9-ye-Dqy" firstAttribute="centerY" secondItem="Gy2-hd-F3V" secondAttribute="centerY" id="Zxh-e9-sT8"/>
-                            <constraint firstItem="9Pg-Ui-uiX" firstAttribute="trailing" secondItem="71Z-d3-FjP" secondAttribute="trailing" constant="59" id="efS-cw-aGd"/>
                             <constraint firstItem="Gy2-hd-F3V" firstAttribute="leading" secondItem="rK9-ye-Dqy" secondAttribute="trailing" constant="20" id="fK9-aE-7fR"/>
                             <constraint firstItem="j1G-za-3Ig" firstAttribute="leading" secondItem="9Pg-Ui-uiX" secondAttribute="leading" constant="43" id="hPg-by-T6B"/>
                             <constraint firstItem="Gy2-hd-F3V" firstAttribute="top" secondItem="9Pg-Ui-uiX" secondAttribute="top" constant="46" id="kQ3-So-VPB"/>
+                            <constraint firstItem="9Pg-Ui-uiX" firstAttribute="trailing" secondItem="71Z-d3-FjP" secondAttribute="trailing" constant="61" id="rZZ-hE-YWr"/>
                             <constraint firstItem="9Pg-Ui-uiX" firstAttribute="bottom" secondItem="j1G-za-3Ig" secondAttribute="bottom" constant="25" id="tkn-ge-Rqi"/>
+                            <constraint firstItem="71Z-d3-FjP" firstAttribute="top" secondItem="rK9-ye-Dqy" secondAttribute="bottom" constant="100" id="wPn-4C-VAT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="87j-JI-rGI"/>

@@ -8,31 +8,29 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
+class ViewController: UIViewController, ReloadDelegate {
     
-    //var expenses = [expenseModule]()
+    @IBOutlet weak var tableView: UITableView!
     
     var manageObjectContext: NSManagedObjectContext?
     var expenseList = [Spendings]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //expenses = expenseModule.getExpenses()
-        //UITabBar.appearance().barTintColor = UIColor.black
-        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         manageObjectContext = appDelegate.persistentContainer.viewContext
+    }
+    
+    override func viewDidAppear(_ animated: Bool){
 
     }
+    
     
     @IBAction func infoButtonTapped(_ sender: Any) {
         let alert = UIAlertController(title: nil, message: "To delete an expense, swipe it left!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,7 +46,6 @@ class ViewController: UIViewController {
 
         do {
             expenseList = try manageObjectContext.fetch(fetchRequest)
-            //tableView.reloadData()
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -65,6 +62,21 @@ class ViewController: UIViewController {
         }
         
         return totalAmount
+    }
+    
+    func reloadTabeView(on: Bool) {
+        if on {
+            DispatchQueue.main.async {
+                self.loadData()
+            }
+        }
+    }
+        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "save" {
+            let vc = segue.destination as! AddViewController
+            vc.delegate = self
+        }
     }
     
 }//class ends
@@ -84,8 +96,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
        // cell.expenseImageView.image = UIImage(named: expense.expenseIcon)
         cell.expenseAmountLabel.text = "$\(expense.expenseAmount)"
         cell.expenceDescriptionLabel.text = expense.expenseDescription
-        
-       // cell.textLabel?.text = expenseList[indexPath.row]
         
         return cell
     }
