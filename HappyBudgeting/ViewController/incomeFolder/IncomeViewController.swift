@@ -6,35 +6,75 @@
 //
 
 import UIKit
+import CoreData
 
 class IncomeViewController: UIViewController {
+    @IBOutlet weak var incomeTableView: UITableView!
     
-    var income = [incomeModule]()
+
+    var manageObjectContext: NSManagedObjectContext?
+    var incomeList = [Income]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        income = incomeModule.getIncome()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        manageObjectContext = appDelegate.persistentContainer.viewContext
         
     }
-}
+    
+    @IBAction func infoButtonTapped(_ sender: Any) {
+        let alert = UIAlertController(title: nil, message: "To delete an income, swipe it left!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
+    }
 
+    func loadData() {
+        guard let manageObjectContext = manageObjectContext else {
+            return
+        }
 
-//@IBOutlet weak var incomeDescriptionLabel: UILabel!
-//@IBOutlet weak var incomeCategoryLabel: UILabel!
-//@IBOutlet weak var incomeAmountLabel: UILabel!
+        let fetchRequest: NSFetchRequest<Income> = Income.fetchRequest()
+
+        do {
+            incomeList = try manageObjectContext.fetch(fetchRequest)
+            DispatchQueue.main.async {
+                self.incomeTableView.reloadData()
+            }
+        } catch {
+            print("Failed to fetch expenses: \(error)")
+        }
+    }
+    
+    func calculateTotalIncome() -> Double {
+        var totalIncomeAmount: Double = 0
+        
+        for income in incomeList {
+            totalIncomeAmount += income.incomeAmount
+        }
+        
+        return totalIncomeAmount
+    }
+    
+}//class ends
+
 
 
 extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return incomeList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "incomeCell", for: indexPath) as? incomeTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "incomeCell", for: indexPath) as? IncomeTableViewCell
         else { return UITableViewCell()}
         
-        let income = income[indexPath.row]
+        let income = incomeList[indexPath.row]
         
         cell.incomeCategoryLabel.text = income.incomeCategory
         cell.incomeAmountLabel.text = "$\(income.incomeAmount)"
@@ -47,6 +87,36 @@ extension IncomeViewController: UITableViewDelegate, UITableViewDataSource{
         return 97
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Your Budget is $1000"
+        let totalIncome = calculateTotalIncome()
+        return "Your income is $\(totalIncome)"
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                
+                let confirmationAlert = UIAlertController(title: "Are you sure you want to delete?", message: "This action is irreversible!", preferredStyle: .alert)
+                
+                confirmationAlert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { [self] (_) in
+                    
+                    let income = self.incomeList[indexPath.row]
+                    
+                    manageObjectContext?.delete(income)
+                    
+                    do {
+                        try manageObjectContext?.save()
+                    } catch {
+                        print("Failed to delete expense: \(error)")
+                    }
+                    
+                    incomeList.remove(at: indexPath.row)
+                    
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+                }))
+                
+                confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                
+                present(confirmationAlert, animated: true, completion: nil)
+            }
+        }
 }

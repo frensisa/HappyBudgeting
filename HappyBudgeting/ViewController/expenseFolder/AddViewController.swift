@@ -6,12 +6,20 @@
 //
 
 import UIKit
+import CoreData
 
 class AddViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var categoryTextfield: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var amountTextfield: UITextField!
+    
+    var expenseCategoryString: String = String()
+    var expenseDescriptionString: String = String()
+    var expenseAmountDouble: Double = Double()
+    
+    var manageObjectContext: NSManagedObjectContext?
+    var expenseList = [Spendings]()
   
     
     override func viewDidLoad() {
@@ -21,48 +29,44 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         descriptionTextField.delegate = self
         amountTextfield.delegate = self
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        manageObjectContext = appDelegate.persistentContainer.viewContext
+        
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-           textField.text = ""
-           textField.placeholder = nil
-       }
+    func saveData(){
+        let newItem = Spendings(context: manageObjectContext!)
+        newItem.expenseCategory = expenseCategoryString
+        newItem.expenseDescription = expenseDescriptionString
+        newItem.expenseAmount = expenseAmountDouble
+                
+        expenseList.append(newItem)
+
+        do{
+            try manageObjectContext?.save()
+        }catch{
+            fatalError("Error in saving data")
+        }
+
+        //loadData()
+
+    }
+    
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//           textField.text = ""
+//           textField.placeholder = nil
+//       }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
+        expenseCategoryString = categoryTextfield.text ?? ""
+        expenseDescriptionString = descriptionTextField.text ?? ""
+        if let amountText = amountTextfield.text, let amount = Double(amountText) {
+            expenseAmountDouble = amount
+        }
+        
+        saveData()
         self.dismiss(animated: true)
     }
-    
-
-    
-    @IBAction func categoryTextfieldTapped(_ sender: Any) {
-        //the text deletes
-        categoryTextfield.text = ""
-        categoryTextfield.placeholder = nil
-    }
-    
-    @IBAction func descriptionTextFieldTapped(_ sender: Any) {
-        //the text deletes
-        descriptionTextField.text = ""
-        descriptionTextField.placeholder = nil
-    }
-    
-    @IBAction func amountTextfieldTapped(_ sender: Any) {
-        //the text deletes
-        amountTextfield.text = ""
-        amountTextfield.placeholder = nil
-    }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 

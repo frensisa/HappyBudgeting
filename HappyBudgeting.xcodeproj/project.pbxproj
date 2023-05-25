@@ -15,11 +15,10 @@
 		15820A0E2A1AA517008AA100 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15820A0C2A1AA517008AA100 /* Main.storyboard */; };
 		15820A102A1AA519008AA100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15820A0F2A1AA519008AA100 /* Assets.xcassets */; };
 		15820A132A1AA519008AA100 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15820A112A1AA519008AA100 /* LaunchScreen.storyboard */; };
-		15820A1E2A1AB10F008AA100 /* expenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15820A1D2A1AB10F008AA100 /* expenseTableViewCell.swift */; };
-		15820A202A1ABE4B008AA100 /* expensesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15820A1F2A1ABE4B008AA100 /* expensesModule.swift */; };
-		15DEDD952A1C0A5A003D2BFD /* incomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DEDD942A1C0A5A003D2BFD /* incomeTableViewCell.swift */; };
+		15820A1E2A1AB10F008AA100 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15820A1D2A1AB10F008AA100 /* ExpenseTableViewCell.swift */; };
+		158D6BFD2A1D687D00BE27BB /* BudgetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 158D6BFB2A1D687D00BE27BB /* BudgetModel.xcdatamodeld */; };
+		15DEDD952A1C0A5A003D2BFD /* IncomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DEDD942A1C0A5A003D2BFD /* IncomeTableViewCell.swift */; };
 		15DEDD972A1C0D08003D2BFD /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DEDD962A1C0D08003D2BFD /* IncomeViewController.swift */; };
-		15DEDD992A1C0EF2003D2BFD /* incomeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DEDD982A1C0EF1003D2BFD /* incomeModule.swift */; };
 		15DEDD9B2A1C14CE003D2BFD /* AddIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DEDD9A2A1C14CE003D2BFD /* AddIncomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,11 +33,10 @@
 		15820A0F2A1AA519008AA100 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15820A122A1AA519008AA100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15820A142A1AA519008AA100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		15820A1D2A1AB10F008AA100 /* expenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expenseTableViewCell.swift; sourceTree = "<group>"; };
-		15820A1F2A1ABE4B008AA100 /* expensesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expensesModule.swift; sourceTree = "<group>"; };
-		15DEDD942A1C0A5A003D2BFD /* incomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = incomeTableViewCell.swift; sourceTree = "<group>"; };
+		15820A1D2A1AB10F008AA100 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
+		158D6BFC2A1D687D00BE27BB /* BudgetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BudgetModel.xcdatamodel; sourceTree = "<group>"; };
+		15DEDD942A1C0A5A003D2BFD /* IncomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeTableViewCell.swift; sourceTree = "<group>"; };
 		15DEDD962A1C0D08003D2BFD /* IncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeViewController.swift; sourceTree = "<group>"; };
-		15DEDD982A1C0EF1003D2BFD /* incomeModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = incomeModule.swift; sourceTree = "<group>"; };
 		15DEDD9A2A1C14CE003D2BFD /* AddIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,9 +55,8 @@
 			isa = PBXGroup;
 			children = (
 				15DEDD9A2A1C14CE003D2BFD /* AddIncomeViewController.swift */,
-				15DEDD982A1C0EF1003D2BFD /* incomeModule.swift */,
 				15DEDD962A1C0D08003D2BFD /* IncomeViewController.swift */,
-				15DEDD942A1C0A5A003D2BFD /* incomeTableViewCell.swift */,
+				15DEDD942A1C0A5A003D2BFD /* IncomeTableViewCell.swift */,
 			);
 			path = incomeFolder;
 			sourceTree = "<group>";
@@ -68,8 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				15223E5B2A1B6F5C00C41369 /* AddViewController.swift */,
-				15820A1F2A1ABE4B008AA100 /* expensesModule.swift */,
-				15820A1D2A1AB10F008AA100 /* expenseTableViewCell.swift */,
+				15820A1D2A1AB10F008AA100 /* ExpenseTableViewCell.swift */,
 			);
 			path = expenseFolder;
 			sourceTree = "<group>";
@@ -99,6 +95,7 @@
 				15820A1C2A1AA534008AA100 /* View */,
 				15820A0F2A1AA519008AA100 /* Assets.xcassets */,
 				15820A142A1AA519008AA100 /* Info.plist */,
+				158D6BFB2A1D687D00BE27BB /* BudgetModel.xcdatamodeld */,
 			);
 			path = HappyBudgeting;
 			sourceTree = "<group>";
@@ -202,16 +199,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15820A202A1ABE4B008AA100 /* expensesModule.swift in Sources */,
-				15820A1E2A1AB10F008AA100 /* expenseTableViewCell.swift in Sources */,
-				15DEDD952A1C0A5A003D2BFD /* incomeTableViewCell.swift in Sources */,
+				15820A1E2A1AB10F008AA100 /* ExpenseTableViewCell.swift in Sources */,
+				15DEDD952A1C0A5A003D2BFD /* IncomeTableViewCell.swift in Sources */,
 				15DEDD972A1C0D08003D2BFD /* IncomeViewController.swift in Sources */,
 				15223E5C2A1B6F5C00C41369 /* AddViewController.swift in Sources */,
 				15820A0B2A1AA517008AA100 /* ViewController.swift in Sources */,
 				15820A072A1AA517008AA100 /* AppDelegate.swift in Sources */,
 				15223E602A1BE33200C41369 /* ProfileViewController.swift in Sources */,
+				158D6BFD2A1D687D00BE27BB /* BudgetModel.xcdatamodeld in Sources */,
 				15DEDD9B2A1C14CE003D2BFD /* AddIncomeViewController.swift in Sources */,
-				15DEDD992A1C0EF2003D2BFD /* incomeModule.swift in Sources */,
 				15820A092A1AA517008AA100 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +426,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		158D6BFB2A1D687D00BE27BB /* BudgetModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				158D6BFC2A1D687D00BE27BB /* BudgetModel.xcdatamodel */,
+			);
+			currentVersion = 158D6BFC2A1D687D00BE27BB /* BudgetModel.xcdatamodel */;
+			path = BudgetModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 158209FB2A1AA517008AA100 /* Project object */;
 }

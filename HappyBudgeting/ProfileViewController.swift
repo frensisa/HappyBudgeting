@@ -8,11 +8,12 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    @IBOutlet weak var budgetLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
 

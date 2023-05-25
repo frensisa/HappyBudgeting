@@ -6,14 +6,20 @@
 //
 
 import UIKit
+import CoreData
 
 class AddIncomeViewController: UIViewController, UITextFieldDelegate {
-    
-    
-    
+
     @IBOutlet weak var incomeCategoryTextField: UITextField!
     @IBOutlet weak var incomeDescriptionTextField: UITextField!
     @IBOutlet weak var incomeAmountTextField: UITextField!
+    
+    var incomeCategoryString: String = String()
+    var incomeDescriptionString: String = String()
+    var incomeAmountDouble: Double = Double()
+
+    var manageObjectContext: NSManagedObjectContext?
+    var incomeList = [Income]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,46 +28,43 @@ class AddIncomeViewController: UIViewController, UITextFieldDelegate {
         incomeDescriptionTextField.delegate = self
         incomeAmountTextField.delegate = self
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        manageObjectContext = appDelegate.persistentContainer.viewContext
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-           textField.text = ""
-           textField.placeholder = nil
-       }
-   
+    func updateDetails(){
+        
+    }
+    
+    func saveData(){
+        let newItem = Income(context: manageObjectContext!)
+        newItem.incomeCategory = incomeCategoryString
+        newItem.incomeDescription = incomeDescriptionString
+        newItem.incomeAmount = incomeAmountDouble
+                
+        incomeList.append(newItem)
 
+        do{
+            try manageObjectContext?.save()
+        }catch{
+            fatalError("Error in saving data")
+        }
+
+        //loadData()
+
+    }
+    
     
     @IBAction func incomeDoneButtonTapped(_ sender: Any) {
+        incomeCategoryString = incomeCategoryTextField.text ?? ""
+        incomeDescriptionString = incomeDescriptionTextField.text ?? ""
+        if let amountText = incomeAmountTextField.text, let amount = Double(amountText) {
+            incomeAmountDouble = amount
+        }
+        
+        saveData()
         self.dismiss(animated: true)
     }
-    
-    @IBAction func incomeCategoryTextFieldTapped(_ sender: Any) {
-        //the text deletes
-        incomeCategoryTextField.text = ""
-        incomeCategoryTextField.placeholder = nil
-    }
-    
-    @IBAction func incomeDescriptionTextFieldTapped(_ sender: Any) {
-        //the text deletes
-        incomeDescriptionTextField.text = ""
-        incomeDescriptionTextField.placeholder = nil
-    }
-    
-    @IBAction func incomeAmountTextFieldTapped(_ sender: Any) {
-        //the text deletes
-        incomeAmountTextField.text = ""
-        incomeAmountTextField.placeholder = nil
-    }
-    
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

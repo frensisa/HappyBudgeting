@@ -7,7 +7,7 @@
 
 import UIKit
 
-class incomeTableViewCell: UITableViewCell {
+class IncomeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var incomeDescriptionLabel: UILabel!
     @IBOutlet weak var incomeCategoryLabel: UILabel!
