@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class IncomeViewController: UIViewController, ReloadDelegate2 {
+class IncomeViewController: UIViewController, AddIncomeReloadDelegate {
     
     @IBOutlet weak var incomeTableView: UITableView!
 
@@ -73,7 +73,7 @@ class IncomeViewController: UIViewController, ReloadDelegate2 {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "incomeSave" {
             let vc = segue.destination as! AddIncomeViewController
-            vc.delegate2 = self
+            vc.delegateIncome = self
         }
     }
     

@@ -20,6 +20,7 @@
 		15DEDD952A1C0A5A003D2BFD /* IncomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DEDD942A1C0A5A003D2BFD /* IncomeTableViewCell.swift */; };
 		15DEDD972A1C0D08003D2BFD /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DEDD962A1C0D08003D2BFD /* IncomeViewController.swift */; };
 		15DEDD9B2A1C14CE003D2BFD /* AddIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DEDD9A2A1C14CE003D2BFD /* AddIncomeViewController.swift */; };
+		723B14DD2A7988330048D7EA /* ExpenseDesignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723B14DC2A7988330048D7EA /* ExpenseDesignViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		15DEDD942A1C0A5A003D2BFD /* IncomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeTableViewCell.swift; sourceTree = "<group>"; };
 		15DEDD962A1C0D08003D2BFD /* IncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeViewController.swift; sourceTree = "<group>"; };
 		15DEDD9A2A1C14CE003D2BFD /* AddIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeViewController.swift; sourceTree = "<group>"; };
+		723B14DC2A7988330048D7EA /* ExpenseDesignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDesignViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			children = (
 				15223E5B2A1B6F5C00C41369 /* AddViewController.swift */,
 				15820A1D2A1AB10F008AA100 /* ExpenseTableViewCell.swift */,
+				723B14DC2A7988330048D7EA /* ExpenseDesignViewController.swift */,
 			);
 			path = expenseFolder;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15820A1E2A1AB10F008AA100 /* ExpenseTableViewCell.swift in Sources */,
+				723B14DD2A7988330048D7EA /* ExpenseDesignViewController.swift in Sources */,
 				15DEDD952A1C0A5A003D2BFD /* IncomeTableViewCell.swift in Sources */,
 				15DEDD972A1C0D08003D2BFD /* IncomeViewController.swift in Sources */,
 				15223E5C2A1B6F5C00C41369 /* AddViewController.swift in Sources */,

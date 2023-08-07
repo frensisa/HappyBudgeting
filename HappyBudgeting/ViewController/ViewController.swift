@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, ReloadDelegate {
+class ViewController: UIViewController, AddExpenseReloadDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
