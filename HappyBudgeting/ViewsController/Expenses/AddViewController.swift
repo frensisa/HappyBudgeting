@@ -12,7 +12,7 @@ protocol AddExpenseReloadDelegate {
     func reloadTabeView(on: Bool)
 }
 
-class AddViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
+class AddViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var expensePickerView: UIPickerView!
     @IBOutlet weak var categoryTextfield: UITextField!
@@ -88,24 +88,24 @@ extension AddViewController: UIPickerViewDataSource {
 extension AddViewController: UIPickerViewDelegate {
     
     
-    func expensePickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+    internal func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 45 // Adjust this value to make the aisle bigger
     }
     
-    func expensePickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 42, height: 42)) // Adjust the width and height to your desired size
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40)) // Adjust the width and height to your desired size
 
         switch row {
         case 0:
-            imageView.image = UIImage(named: "a dog")?.resize(to: CGSize(width: 42, height: 42))
+            imageView.image = UIImage(named: "a dog")?.resize(to: CGSize(width: 40, height: 40))
         case 1:
-            imageView.image = UIImage(named: "groceries")?.resize(to: CGSize(width: 42, height: 42))
+            imageView.image = UIImage(named: "groceries")?.resize(to: CGSize(width: 40, height: 40))
         case 2:
-            imageView.image = UIImage(named: "gym")?.resize(to: CGSize(width: 42, height: 42))
+            imageView.image = UIImage(named: "gym")?.resize(to: CGSize(width: 40, height: 40))
         case 3:
-            imageView.image = UIImage(named: "savings")?.resize(to: CGSize(width: 42, height: 42))
+            imageView.image = UIImage(named: "savings")?.resize(to: CGSize(width: 40, height: 40))
         case 4:
-            imageView.image = UIImage(named: "tmybudget")?.resize(to: CGSize(width: 42, height: 42))
+            imageView.image = UIImage(named: "tmybudget")?.resize(to: CGSize(width: 40, height: 40))
         default:
             imageView.image = nil
         }

@@ -53,24 +53,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		152D15342A1C1896001691F2 /* incomeFolder */ = {
+		152D15342A1C1896001691F2 /* Incomes */ = {
 			isa = PBXGroup;
 			children = (
 				15DEDD9A2A1C14CE003D2BFD /* AddIncomeViewController.swift */,
 				15DEDD962A1C0D08003D2BFD /* IncomeViewController.swift */,
 				15DEDD942A1C0A5A003D2BFD /* IncomeTableViewCell.swift */,
 			);
-			path = incomeFolder;
+			path = Incomes;
 			sourceTree = "<group>";
 		};
-		152D15352A1C18B0001691F2 /* expenseFolder */ = {
+		152D15352A1C18B0001691F2 /* Expenses */ = {
 			isa = PBXGroup;
 			children = (
 				15223E5B2A1B6F5C00C41369 /* AddViewController.swift */,
 				15820A1D2A1AB10F008AA100 /* ExpenseTableViewCell.swift */,
 				723B14DC2A7988330048D7EA /* ExpenseDesignViewController.swift */,
 			);
-			path = expenseFolder;
+			path = Expenses;
 			sourceTree = "<group>";
 		};
 		158209FA2A1AA517008AA100 = {
@@ -93,9 +93,9 @@
 			isa = PBXGroup;
 			children = (
 				15820A1A2A1AA522008AA100 /* AppDelegate */,
-				15820A1B2A1AA52A008AA100 /* ViewController */,
+				15820A1B2A1AA52A008AA100 /* ViewsController */,
 				15223E5F2A1BE33200C41369 /* ProfileViewController.swift */,
-				15820A1C2A1AA534008AA100 /* View */,
+				15820A1C2A1AA534008AA100 /* Views */,
 				15820A0F2A1AA519008AA100 /* Assets.xcassets */,
 				15820A142A1AA519008AA100 /* Info.plist */,
 				158D6BFB2A1D687D00BE27BB /* BudgetModel.xcdatamodeld */,
@@ -112,23 +112,23 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
-		15820A1B2A1AA52A008AA100 /* ViewController */ = {
+		15820A1B2A1AA52A008AA100 /* ViewsController */ = {
 			isa = PBXGroup;
 			children = (
 				15820A0A2A1AA517008AA100 /* ViewController.swift */,
-				152D15342A1C1896001691F2 /* incomeFolder */,
-				152D15352A1C18B0001691F2 /* expenseFolder */,
+				152D15342A1C1896001691F2 /* Incomes */,
+				152D15352A1C18B0001691F2 /* Expenses */,
 			);
-			path = ViewController;
+			path = ViewsController;
 			sourceTree = "<group>";
 		};
-		15820A1C2A1AA534008AA100 /* View */ = {
+		15820A1C2A1AA534008AA100 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				15820A0C2A1AA517008AA100 /* Main.storyboard */,
 				15820A112A1AA519008AA100 /* LaunchScreen.storyboard */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
