@@ -22,6 +22,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     var expenseCategoryString: String = String()
     var expenseDescriptionString: String = String()
     var expenseAmountDouble: Double = Double()
+    var selectedIconName: String = ""
     
     var manageObjectContext: NSManagedObjectContext?
     var expenseList = [Spendings]()
@@ -47,6 +48,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         newItem.expenseCategory = expenseCategoryString
         newItem.expenseDescription = expenseDescriptionString
         newItem.expenseAmount = expenseAmountDouble
+        newItem.expenseIconName = selectedIconName
                 
         expenseList.append(newItem)
 
@@ -59,16 +61,24 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let namesArray = ["a dog", "groceries", "gym", "savings", "tmybudget"]
+        if row < namesArray.count {
+            selectedIconName = namesArray[row]
+        }
+    }
+    
     @IBAction func doneButtonTapped(_ sender: Any) {
         expenseCategoryString = categoryTextfield.text ?? ""
         expenseDescriptionString = descriptionTextField.text ?? ""
         if let amountText = amountTextfield.text, let amount = Double(amountText) {
             expenseAmountDouble = amount
         }
-        
+
         saveData()
         delegate?.reloadTabeView(on: true)
         self.dismiss(animated: true)
+        
     }
 }
 
@@ -86,29 +96,21 @@ extension AddViewController: UIPickerViewDataSource {
 }
 
 extension AddViewController: UIPickerViewDelegate {
-    
-    
     internal func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 45 // Adjust this value to make the aisle bigger
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40)) // Adjust the width and height to your desired size
-
-        switch row {
-        case 0:
-            imageView.image = UIImage(named: "a dog")?.resize(to: CGSize(width: 40, height: 40))
-        case 1:
-            imageView.image = UIImage(named: "groceries")?.resize(to: CGSize(width: 40, height: 40))
-        case 2:
-            imageView.image = UIImage(named: "gym")?.resize(to: CGSize(width: 40, height: 40))
-        case 3:
-            imageView.image = UIImage(named: "savings")?.resize(to: CGSize(width: 40, height: 40))
-        case 4:
-            imageView.image = UIImage(named: "tmybudget")?.resize(to: CGSize(width: 40, height: 40))
-        default:
+        
+        let namesArray = ["a dog", "groceries", "gym", "savings", "tmybudget"]
+        if row < namesArray.count {
+            let imageName = namesArray[row]
+            imageView.image = UIImage(named: imageName)?.resizeExpense(to: CGSize(width: 40, height: 40))
+        } else {
             imageView.image = nil
         }
+        
         return imageView
     }
 }

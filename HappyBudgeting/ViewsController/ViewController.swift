@@ -93,10 +93,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         let expense = expenseList[indexPath.row]
         
         cell.expenseCategoryLabel.text = expense.expenseCategory
-       // cell.expenseImageView.image = UIImage(named: expense.expenseIcon)
+        cell.expenseImageView.image = UIImage(named: expense.expenseIconName ?? "placeholder_icon")?.resizeExpense(to: CGSize(width: 40, height: 40))
         cell.expenseAmountLabel.text = "$\(expense.expenseAmount)"
         cell.expenceDescriptionLabel.text = expense.expenseDescription
-        
         return cell
     }
     
