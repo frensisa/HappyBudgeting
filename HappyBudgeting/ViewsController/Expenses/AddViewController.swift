@@ -23,6 +23,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     var expenseDescriptionString: String = String()
     var expenseAmountDouble: Double = Double()
     var selectedIconName: String = ""
+   
     
     var manageObjectContext: NSManagedObjectContext?
     var expenseList = [Spendings]()
@@ -49,6 +50,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         newItem.expenseDescription = expenseDescriptionString
         newItem.expenseAmount = expenseAmountDouble
         newItem.expenseIconName = selectedIconName
+        newItem.expenseDate = Date()
                 
         expenseList.append(newItem)
 
@@ -73,6 +75,10 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         expenseDescriptionString = descriptionTextField.text ?? ""
         if let amountText = amountTextfield.text, let amount = Double(amountText) {
             expenseAmountDouble = amount
+        }
+        
+        if selectedIconName.isEmpty {
+            selectedIconName = "a dog"
         }
 
         saveData()

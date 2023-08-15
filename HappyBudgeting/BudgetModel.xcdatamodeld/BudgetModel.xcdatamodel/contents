@@ -12,6 +12,7 @@
     <entity name="Spendings" representedClassName="Spendings" syncable="YES" codeGenerationType="class">
         <attribute name="expenseAmount" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="expenseCategory" optional="YES" attributeType="String"/>
+        <attribute name="expenseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="expenseDescription" optional="YES" attributeType="String"/>
         <attribute name="expenseIconName" optional="YES" attributeType="String"/>
     </entity>

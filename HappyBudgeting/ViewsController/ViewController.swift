@@ -43,6 +43,9 @@ class ViewController: UIViewController, AddExpenseReloadDelegate {
         }
 
         let fetchRequest: NSFetchRequest<Spendings> = Spendings.fetchRequest()
+        
+        let sortDescriptor = NSSortDescriptor(key: "expenseDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
 
         do {
             expenseList = try manageObjectContext.fetch(fetchRequest)
