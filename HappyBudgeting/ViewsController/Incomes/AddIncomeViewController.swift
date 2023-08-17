@@ -41,9 +41,8 @@ class AddIncomeViewController: UIViewController, UITextFieldDelegate {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         manageObjectContext = appDelegate.persistentContainer.viewContext
-        
+
     }
-    
 
     func saveData(){
         let newItem = Income(context: manageObjectContext!)
@@ -62,6 +61,18 @@ class AddIncomeViewController: UIViewController, UITextFieldDelegate {
         //loadData()
 
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           if textField == incomeCategoryTextField {
+               incomeDescriptionTextField.becomeFirstResponder() // Move to the incomeDescriptionTextField
+           } else if textField == incomeDescriptionTextField {
+               incomeAmountTextField.becomeFirstResponder() // Move to the incomeAmountTextField
+           } else {
+               textField.resignFirstResponder() // Dismiss the keyboard
+           }
+           
+           return true
+       }
     
     
     @IBAction func incomeDoneButtonTapped(_ sender: Any) {

@@ -42,6 +42,14 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         manageObjectContext = appDelegate.persistentContainer.viewContext
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        view.addGestureRecognizer(tapGesture)
+        
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        // Resign the first responder status of the amountTextfield
+        amountTextfield.resignFirstResponder()
     }
     
     func saveData(){
@@ -60,6 +68,18 @@ class AddViewController: UIViewController, UITextFieldDelegate {
             fatalError("Error in saving data")
         }
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == categoryTextfield {
+                    descriptionTextField.becomeFirstResponder() // Move to the descriptionTextField
+                } else if textField == descriptionTextField {
+                    amountTextfield.becomeFirstResponder() // Move to the amountTextfield
+                } else {
+                    textField.resignFirstResponder() // Dismiss the keyboard
+                }
+               
+               return true
     }
     
     
